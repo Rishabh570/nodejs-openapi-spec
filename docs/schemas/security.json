@@ -1,0 +1,8 @@
+{
+  "bearerAuth": {
+      "type": "http",
+      "description": "JWT authorization header using the bearer scheme",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+  }
+}

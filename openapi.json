@@ -1,0 +1,240 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Nodejs API",
+    "description": "API to store items",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{host}:{port}",
+      "description": "local server",
+      "variables": {
+        "host": {
+          "default": "localhost",
+          "description": "points to the application running locally"
+        },
+        "port": {
+          "default": "3001"
+        }
+      }
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "required": [
+          "name",
+          "hash",
+          "rating",
+          "price"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "string",
+            "example": "4"
+          },
+          "price": {
+            "type": "number"
+          },
+          "hash": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Success": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ],
+                  "example": true
+                },
+                "item": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Something went wrong while creating a new item!"
+                },
+                "item": {
+                  "type": "object",
+                  "enum": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Response for operation successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Something went wrong while creating a new item!"
+                },
+                "item": {
+                  "type": "object",
+                  "enum": [
+                    null
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/item": {
+      "post": {
+        "tags": [
+          "item"
+        ],
+        "description": "Creates a new item",
+        "requestBody": {
+          "description": "Request parameters in JSON format",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "rating",
+                  "price",
+                  "hash"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "string",
+                    "example": "4"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "hash": {
+                    "type": "string",
+                    "example": "kh129uh21i"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "item"
+        ],
+        "description": "Update item details",
+        "requestBody": {
+          "description": "Request parameters in JSON format",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "hash"
+                ],
+                "properties": {
+                  "hash": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/item/{hash}": {
+      "get": {
+        "tags": [
+          "item"
+        ],
+        "description": "Fetch item details",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}

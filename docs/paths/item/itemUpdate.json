@@ -1,0 +1,32 @@
+{
+  "tags": ["item"],
+  "description": "Update item details",
+  "requestBody": {
+    "description": "Request parameters in JSON format",
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": ["hash"],
+          "properties": {
+            "hash": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "$ref": "../../responses/success.json"
+    },
+    "400": {
+      "$ref": "../../responses/bad-request.json"
+    },
+    "500": {
+      "$ref": "../../responses/internal-server-error.json"
+    }
+  }
+}

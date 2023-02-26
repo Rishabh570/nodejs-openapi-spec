@@ -1,0 +1,43 @@
+{
+  "tags": ["item"],
+  "description": "Creates a new item",
+  "requestBody": {
+    "description": "Request parameters in JSON format",
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": ["name", "rating", "price", "hash"],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "rating": {
+              "type": "string",
+              "example": "4"
+            },
+            "price": {
+              "type": "number"
+            },
+            "hash": {
+              "type": "string",
+              "example": "kh129uh21i"
+            }
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "$ref": "../../responses/success.json"
+    },
+    "400": {
+      "$ref": "../../responses/bad-request.json"
+    },
+    "500": {
+      "$ref": "../../responses/internal-server-error.json"
+    }
+  }
+}

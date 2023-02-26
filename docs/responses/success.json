@@ -1,0 +1,20 @@
+{
+  "description": "Response for operation successful",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "boolean",
+            "enum": [true],
+            "example": true
+          },
+          "item": {
+            "$ref": "../schemas/item.json"
+          }
+        }
+      }
+    }
+  }  
+}

@@ -1,0 +1,15 @@
+{
+  "/item": {
+    "post": {
+      "$ref": "./item/itemCreate.json"
+    },
+    "put": {
+      "$ref": "./item/itemUpdate.json"
+    }
+  },
+  "/item/{hash}": {
+    "get": {
+      "$ref": "./item/itemRead.json"
+    }
+  }
+}

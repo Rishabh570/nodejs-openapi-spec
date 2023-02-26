@@ -1,0 +1,20 @@
+{
+  "description": "Response for operation successful",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Something went wrong while creating a new item!"
+          },
+          "item": {
+            "type": "object",
+            "enum": [null]
+          }
+        }
+      }
+    }
+  }  
+}

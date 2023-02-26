@@ -42,12 +42,12 @@ router.post('/', async (req, res) => {
     if (err.message === constants.ERROR_MESSAGES.BAD_REQUEST) {
       return res.status(constants.HTTP_STATUS_CODES.BAD_REQUEST).json({
         item: null,
-        message: err.message || 'Something went wrong while creating new item!'
+        message: err.message || 'Something went wrong while creating a new item!'
       });
     }
     return res.status(constants.HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
       item: null,
-      message: err.message || 'Something went wrong while creating new item!'
+      message: err.message || 'Something went wrong while creating a new item!'
     });
   }
 });
@@ -66,12 +66,12 @@ router.put('/', async (req, res) => {
     if (err.message === constants.ERROR_MESSAGES.BAD_REQUEST) {
       return res.status(constants.HTTP_STATUS_CODES.BAD_REQUEST).json({
         item: null,
-        message: err.message || 'Something went wrong while creating new item!'
+        message: err.message || 'Something went wrong while creating a new item!'
       });
     }
     return res.status(constants.HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json({
       item: null,
-      message: err.message || 'Something went wrong while creating new item!'
+      message: err.message || 'Something went wrong while creating a new item!'
     });
   }
 });

@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+    "docs:debug": "swagger-cli validate -d docs/index.json",
+    "docs:generate": "npm run docs:debug && swagger-cli bundle docs/index.json --outfile openapi.json",
+    "prepare": "npx husky install"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,9 @@
     "mongoose": "^6.10.0",
     "nanoid": "^4.0.1",
     "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "husky": "^8.0.3"
   }
 }

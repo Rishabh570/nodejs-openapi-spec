@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": ["name", "hash", "rating", "price"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "string",
+      "example": "4"
+    },
+    "price": {
+      "type": "number"
+    },
+    "hash": {
+      "type": "string"
+    }
+  }
+}
