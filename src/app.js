@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
 const bodyParser = require('body-parser');
+const openApiDocumentation = require('../openapi.json');
 
 const {
 	itemRoutes,
@@ -20,6 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/item', itemRoutes);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiDocumentation));
 
 // Connect to mongoDB
 let mongoDB = process.env.MONGODB_URL || "mongodb://localhost:27017/express-api-unit-test-starter";
